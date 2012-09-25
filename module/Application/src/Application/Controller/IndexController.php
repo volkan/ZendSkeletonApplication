@@ -10,12 +10,43 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Zend\View\Model\ViewModel,
+	Zend\View\Model\JsonModel
+;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $viewModel = new ViewModel();
+
+        return $ViewModel;
     }
+
+    //view helper ve layout çalışmaz
+    public function indexJsonAction()
+    {
+        $jsonModel = new JsonModel();
+
+        return $jsonModel;
+    }  
+
+    public function indexWithoutRenderAction()
+    {
+
+        return '';
+    }
+
+    /**
+     * @return \Application\Repository\AlbumRepository
+     */
+    public function getAlbumTable()
+    {
+        static $table;
+
+        if (null === $table) {
+            $table = $this->getServiceLocator()->get('albumTable');
+        }
+        return $table;
+    }    
 }

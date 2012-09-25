@@ -8,6 +8,20 @@
  */
 
 return array(
+    'doctrine' => array(
+        'driver' => array(
+            'Application_Driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Application/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Application\Entity' =>  'Application_Driver'
+                )
+            ),
+        )
+    ),    
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -55,6 +69,10 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'albumTable' =>  function($sm) {
+                $table = $sm->get('doctrine.entitymanager.orm_default')->getRepository('Application\Entity\Album');
+                return $table;
+            },            
         ),
     ),
     'translator' => array(
@@ -86,6 +104,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
 );

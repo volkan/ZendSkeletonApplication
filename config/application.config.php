@@ -3,6 +3,7 @@ return array(
     'modules' => array(
         'Application',
         'PhlyContact',
+        'PhlyPeep',
         'ZendDeveloperTools'
     ),
     'module_listener_options' => array(
