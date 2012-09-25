@@ -20,13 +20,16 @@ class IndexController extends AbstractActionController
     {
         $viewModel = new ViewModel();
 
-        return $ViewModel;
+        return $viewModel;
     }
 
     //view helper ve layout çalışmaz
     public function indexJsonAction()
     {
+    	$result = $this->getAlbumTable()->fetchAll();
+    	$serialize = serialize($result);
         $jsonModel = new JsonModel();
+        $jsonModel->setVariable('result', $serialize);
 
         return $jsonModel;
     }  

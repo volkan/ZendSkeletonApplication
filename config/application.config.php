@@ -2,8 +2,10 @@
 return array(
     'modules' => array(
         'Application',
+        'DoctrineModule',
+        'DoctrineORMModule',        
         'PhlyContact',
-        'PhlyPeep',
+        //'PhlyPeep',
         'ZendDeveloperTools'
     ),
     'module_listener_options' => array(

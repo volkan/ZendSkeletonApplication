@@ -1,3 +1,10 @@
+Örnek url 
+
+http://zf2custom.local/application/index/index
+http://zf2custom.local/application/index/indexjson
+http://zf2custom.local/application/index/index-without-render
+
+
 ZendSkeletonApplication
 =======================
 
